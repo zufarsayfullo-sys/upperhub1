@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upper-Intermediate Exam Prep · Mr Zufar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,600;0,800;1,500&family=Josefin+Sans:wght@300;400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #050d1a;
+  --gold:   #c8a84b;
+  --gold2:  #e4c86a;
+  --gold3:  #f5dfa0;
+  --cream:  #f0ead8;
+  --muted:  rgba(240,234,216,0.5);
+  --border: rgba(200,168,75,0.25);
+  --glass:  rgba(255,255,255,0.04);
+  --red:    #c05060;
+  --green:  #3a9e70;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Josefin Sans',sans-serif;
+  background:var(--navy); color:var(--cream);
+  min-height:100vh; overflow-x:hidden;
+}
+
+#particles { position:fixed; inset:0; z-index:0; pointer-events:none; }
+.photo-bg {
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80') center 20%/cover no-repeat;
+  opacity:0.07; filter:grayscale(100%) contrast(1.2);
+}
+.photo-overlay {
+  position:fixed; inset:0; z-index:2; pointer-events:none;
+  background:
+    linear-gradient(135deg,rgba(5,13,26,0.96) 0%,rgba(5,13,26,0.80) 50%,rgba(5,13,26,0.96) 100%),
+    radial-gradient(ellipse 60% 80% at 80% 40%,rgba(200,168,75,0.06) 0%,transparent 70%);
+}
+.deco-lines {
+  position:fixed; inset:0; z-index:2; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg,transparent,transparent 119px,rgba(200,168,75,0.03) 120px),
+    repeating-linear-gradient(0deg,transparent,transparent 119px,rgba(200,168,75,0.03) 120px);
+}
+
+#main {
+  position:relative; z-index:10;
+  max-width:1100px; margin:0 auto; padding:0 24px 80px;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:flex-start;
+  padding:80px 0 60px; position:relative;
+}
+.hero-eyebrow {
+  display:flex; align-items:center; gap:12px;
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:var(--gold); font-weight:600; margin-bottom:28px;
+  opacity:0; animation:fadeup 0.8s 0.2s ease forwards;
+}
+.hero-eyebrow::before { content:''; width:40px; height:1px; background:var(--gold); }
+.hero-title {
+  font-family:'Bodoni Moda',serif;
+  font-size:clamp(42px,7vw,86px); line-height:1.02; margin-bottom:10px;
+  color:var(--cream); opacity:0; animation:fadeup 0.9s 0.35s ease forwards;
+}
+.hero-title .accent { color:var(--gold2); font-style:italic; display:block; }
+.hero-sub {
+  font-size:clamp(13px,1.8vw,16px); letter-spacing:3px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:48px;
+  opacity:0; animation:fadeup 0.9s 0.5s ease forwards;
+}
+.hero-divider {
+  width:120px; height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-bottom:36px; opacity:0; animation:fadeup 0.9s 0.6s ease forwards;
+}
+.hero-stats { display:flex; gap:40px; flex-wrap:wrap; opacity:0; animation:fadeup 0.9s 0.7s ease forwards; }
+.stat { text-align:center; }
+.stat-num { font-family:'Bodoni Moda',serif; font-size:32px; color:var(--gold2); line-height:1; margin-bottom:4px; }
+.stat-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+.hero-scroll {
+  position:absolute; bottom:36px; left:0;
+  display:flex; align-items:center; gap:10px;
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(200,168,75,0.5); opacity:0; animation:fadeup 1s 1.2s ease forwards;
+}
+.scroll-line {
+  width:30px; height:1px; background:rgba(200,168,75,0.4);
+  animation:scrollline 1.5s 1.5s ease-in-out infinite alternate;
+}
+@keyframes scrollline { to { width:60px; opacity:0.8; } }
+@keyframes fadeup { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══════════════════════════════════════════
+   COLLAPSIBLE SECTION
+══════════════════════════════════════════ */
+.section-wrap { padding-top:24px; }
+
+.section-toggle {
+  width:100%; background:none; border:none; cursor:pointer;
+  display:flex; align-items:center; gap:20px;
+  padding:28px 0; border-top:1px solid rgba(200,168,75,0.12);
+  transition:all 0.25s; text-align:left;
+}
+.section-toggle:hover { border-top-color:rgba(200,168,75,0.4); }
+.section-toggle:hover .sh-title { color:var(--gold2); }
+
+.sh-num {
+  font-family:'Bodoni Moda',serif; font-size:64px; line-height:1;
+  color:rgba(200,168,75,0.12); font-style:italic; user-select:none;
+  transition:color 0.3s; flex-shrink:0; width:80px; text-align:right;
+}
+.section-toggle:hover .sh-num { color:rgba(200,168,75,0.25); }
+
+.sh-text { flex:1; }
+.sh-label { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
+.sh-title {
+  font-family:'Bodoni Moda',serif; font-size:clamp(24px,4vw,40px);
+  color:var(--cream); transition:color 0.3s;
+}
+.sh-meta { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:5px; }
+
+.sh-right { display:flex; align-items:center; gap:14px; flex-shrink:0; }
+.sh-status {
+  font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:700;
+  padding:4px 11px; border-radius:20px;
+}
+.status-live { background:rgba(58,158,112,0.2); color:#5ecea0; border:1px solid rgba(58,158,112,0.3); }
+.status-soon { background:rgba(200,168,75,0.1); color:var(--gold); border:1px solid rgba(200,168,75,0.2); }
+
+.sh-chevron {
+  width:28px; height:28px; border-radius:50%;
+  border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+  font-size:12px; color:var(--gold); transition:all 0.35s;
+  flex-shrink:0;
+}
+.section-toggle.open .sh-chevron { transform:rotate(180deg); border-color:var(--gold); }
+.section-toggle.open .sh-num { color:rgba(200,168,75,0.3); }
+
+/* Section body — slide open/close */
+.section-body {
+  overflow:hidden;
+  max-height:0;
+  transition:max-height 0.5s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
+  opacity:0;
+}
+.section-body.open {
+  max-height:1200px;
+  opacity:1;
+}
+.section-body-inner { padding:0 0 36px; }
+
+/* ── GRAMMAR CARDS ── */
+.grammar-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px; margin-bottom:8px;
+}
+.g-card {
+  position:relative; overflow:hidden;
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:16px; padding:28px 26px;
+  text-decoration:none; color:inherit;
+  transition:all 0.35s cubic-bezier(0.23,1,0.32,1); display:block;
+}
+.g-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(200,168,75,0.08) 0%,transparent 60%);
+  opacity:0; transition:opacity 0.35s;
+}
+.g-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.g-card:hover { transform:translateY(-6px); border-color:rgba(200,168,75,0.5); box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 40px rgba(200,168,75,0.08); }
+.g-card:hover::before { opacity:1; }
+.g-card:hover::after  { transform:scaleX(1); }
+.g-card-icon {
+  width:44px; height:44px; border:1.5px solid var(--border); border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; margin-bottom:18px; background:rgba(200,168,75,0.06); transition:all 0.35s;
+}
+.g-card:hover .g-card-icon { border-color:var(--gold); background:rgba(200,168,75,0.12); }
+.g-card-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.g-card-title { font-family:'Bodoni Moda',serif; font-size:22px; color:var(--cream); margin-bottom:10px; }
+.g-card-desc  { font-size:12px; color:var(--muted); line-height:1.7; margin-bottom:20px; }
+.g-card-arrow { display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); transition:gap 0.3s; }
+.g-card:hover .g-card-arrow { gap:14px; }
+.g-card-arrow::after { content:'→'; }
+
+.g-card.mix-card {
+  grid-column:span 2;
+  background:linear-gradient(120deg,rgba(200,168,75,0.07),rgba(200,168,75,0.03));
+  border-color:rgba(200,168,75,0.3); display:flex; align-items:center; gap:28px;
+}
+@media(max-width:660px){ .g-card.mix-card { grid-column:span 1; flex-direction:column; } }
+.mix-left { flex:1; }
+.mix-right { flex-shrink:0; width:100px; height:80px; display:flex; align-items:center; justify-content:center; font-size:48px; opacity:0.6; }
+
+/* ── FEATURE CARDS ── */
+.feature-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.f-card {
+  position:relative; overflow:hidden;
+  border:1px solid var(--border); border-radius:20px;
+  padding:36px 32px; text-decoration:none; color:inherit; display:block;
+  transition:all 0.35s cubic-bezier(0.23,1,0.32,1); min-height:190px;
+}
+.f-card.active {
+  background:linear-gradient(135deg,rgba(200,168,75,0.08) 0%,rgba(200,168,75,0.03) 100%),var(--glass);
+}
+.f-card.active:hover { transform:translateY(-5px); border-color:rgba(200,168,75,0.5); box-shadow:0 28px 70px rgba(0,0,0,0.5),0 0 40px rgba(200,168,75,0.1); }
+.f-card.soon { background:rgba(255,255,255,0.02); cursor:default; }
+.f-card-badge {
+  position:absolute; top:18px; right:18px;
+  font-size:9px; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:4px 10px; border-radius:20px;
+}
+.badge-live { background:rgba(58,158,112,0.2); color:#5ecea0; border:1px solid rgba(58,158,112,0.3); }
+.badge-soon { background:rgba(200,168,75,0.1); color:var(--gold); border:1px solid rgba(200,168,75,0.2); }
+.f-card-num {
+  font-family:'Bodoni Moda',serif; font-size:54px; line-height:1; color:rgba(200,168,75,0.1);
+  position:absolute; bottom:22px; right:26px; font-style:italic; user-select:none;
+}
+.f-card-icon { font-size:26px; margin-bottom:12px; }
+.f-card-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
+.f-card-title { font-family:'Bodoni Moda',serif; font-size:26px; color:var(--cream); margin-bottom:9px; }
+.f-card-desc  { font-size:13px; color:var(--muted); line-height:1.65; max-width:280px; }
+.f-card-cta { display:inline-flex; align-items:center; gap:8px; margin-top:18px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold2); transition:gap 0.3s; }
+.f-card.active:hover .f-card-cta { gap:14px; }
+.f-card-cta::after { content:'→'; }
+
+/* ── COMING STRIP ── */
+.coming-strip {
+  display:flex; align-items:center; gap:14px;
+  background:rgba(200,168,75,0.04); border:1px solid rgba(200,168,75,0.1);
+  border-radius:10px; padding:14px 20px;
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(200,168,75,0.4); margin-top:16px;
+}
+.coming-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); opacity:0.4; animation:pulse 2s infinite; }
+@keyframes pulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.9;transform:scale(1.3)}}
+
+/* ── SIGNATURE ── */
+.signature-section {
+  margin-top:80px; display:flex; flex-direction:column; align-items:center;
+  text-align:center; padding:60px 0 20px;
+  border-top:1px solid rgba(200,168,75,0.1); position:relative;
+}
+.sig-line { position:absolute; top:0; left:50%; transform:translateX(-50%); width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.sig-label { font-size:10px; letter-spacing:4px; text-transform:uppercase; color:rgba(200,168,75,0.4); margin-bottom:18px; }
+.sig-name { font-family:'Caveat',cursive; font-size:48px; color:var(--gold2); line-height:1; text-shadow:0 0 40px rgba(200,168,75,0.3); margin-bottom:10px; }
+.sig-title { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.sig-sub { font-size:11px; color:rgba(240,234,216,0.25); letter-spacing:1px; }
+
+@media(max-width:600px){
+  .grammar-grid { grid-template-columns:1fr; }
+  .feature-row  { grid-template-columns:1fr; }
+  .hero-stats   { gap:24px; }
+  .sh-num       { font-size:44px; width:56px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="photo-bg"></div>
+<div class="photo-overlay"></div>
+<div class="deco-lines"></div>
+
+<div id="main">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-eyebrow">Oxford Navigate · B2 Upper-Intermediate</div>
+    <h1 class="hero-title">
+      Exam
+      <span class="accent">Preparation</span>
+    </h1>
+    <p class="hero-sub">Complete skills programme · Mr Zufar</p>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Sections</div></div>
+      <div class="stat"><div class="stat-num">B2</div><div class="stat-label">Level</div></div>
+      <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Questions</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Practice rounds</div></div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Explore sections</div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTIONS — all collapsible
+  ══════════════════════════════════════════ -->
+
+  <!-- 1. GRAMMAR -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">01</div>
+      <div class="sh-text">
+        <div class="sh-label">Section One</div>
+        <div class="sh-title">Grammar</div>
+        <div class="sh-meta">6 quizzes · Modals · Used To · Word Forms · Wish · Conditionals · Mix</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-live">Live</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="grammar-grid">
+          <a href="https://zufarsayfullo-sys.github.io/uppermodal/" target="_blank" class="g-card">
+            <div class="g-card-icon">⚡</div>
+            <div class="g-card-label">Grammar · Unit 1</div>
+            <div class="g-card-title">Modal Verbs</div>
+            <div class="g-card-desc">Master obligation, permission, deduction and possibility. Targeted questions based on real exam errors.</div>
+            <div class="g-card-arrow">Start quiz</div>
+          </a>
+          <a href="https://zufarsayfullo-sys.github.io/upperusedto/" target="_blank" class="g-card">
+            <div class="g-card-icon">🔄</div>
+            <div class="g-card-label">Grammar · Unit 2</div>
+            <div class="g-card-title">Used To &amp; Would</div>
+            <div class="g-card-desc">Past habits, states, and the <em>be/get used to</em> distinction. The most confused structures at B2.</div>
+            <div class="g-card-arrow">Start quiz</div>
+          </a>
+          <a href="https://zufarsayfullo-sys.github.io/upperwordforms/" target="_blank" class="g-card">
+            <div class="g-card-icon">🔤</div>
+            <div class="g-card-label">Grammar · Unit 3</div>
+            <div class="g-card-title">Word Formation</div>
+            <div class="g-card-desc">Adjectives, adverbs, nouns and sentence adverbs. Build the vocabulary you need for Use of English tasks.</div>
+            <div class="g-card-arrow">Start quiz</div>
+          </a>
+          <a href="https://zufarsayfullo-sys.github.io/upperwish/" target="_blank" class="g-card">
+            <div class="g-card-icon">✨</div>
+            <div class="g-card-label">Grammar · Unit 4</div>
+            <div class="g-card-title">Wish &amp; If Only</div>
+            <div class="g-card-desc">Present wishes, future wishes and past regrets. Mastering the tense sequence after <em>wish</em>.</div>
+            <div class="g-card-arrow">Start quiz</div>
+          </a>
+          <a href="https://zufarsayfullo-sys.github.io/upperthirdcond/" target="_blank" class="g-card">
+            <div class="g-card-icon">🔀</div>
+            <div class="g-card-label">Grammar · Unit 5</div>
+            <div class="g-card-title">Third Conditional</div>
+            <div class="g-card-desc">Past hypotheticals with <em>had + p.p.</em> and <em>would have + p.p.</em> Spot and avoid the most common errors.</div>
+            <div class="g-card-arrow">Start quiz</div>
+          </a>
+          <a href="https://zufarsayfullo-sys.github.io/uppermix/" target="_blank" class="g-card mix-card">
+            <div class="mix-left">
+              <div class="g-card-icon">🎯</div>
+              <div class="g-card-label">Grammar · Mixed Revision</div>
+              <div class="g-card-title">Full Grammar Mix</div>
+              <div class="g-card-desc">All grammar units combined in one timed challenge. The ultimate B2 grammar workout — are you ready?</div>
+              <div class="g-card-arrow">Take the challenge</div>
+            </div>
+            <div class="mix-right">🎯</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. VOCABULARY -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">02</div>
+      <div class="sh-text">
+        <div class="sh-label">Section Two</div>
+        <div class="sh-title">Vocabulary</div>
+        <div class="sh-meta">Coming soon</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-soon">Soon</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="coming-strip">
+          <div class="coming-dot"></div>
+          Vocabulary quizzes — coming soon · We are working on it
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPEAKING -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">03</div>
+      <div class="sh-text">
+        <div class="sh-label">Section Three</div>
+        <div class="sh-title">Speaking</div>
+        <div class="sh-meta">Interactive · Exam-style tasks · B2 oral assessment</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-live">Live</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="feature-row">
+          <a href="https://zufarsayfullo-sys.github.io/speakingupper/" target="_blank" class="f-card active">
+            <span class="f-card-badge badge-live">Live</span>
+            <div class="f-card-icon">🎙️</div>
+            <div class="f-card-label">Section Three · Interactive</div>
+            <div class="f-card-title">Speaking Practice</div>
+            <div class="f-card-desc">Exam-style speaking tasks with prompts, timing and structured practice for B2 oral assessment.</div>
+            <div class="f-card-cta">Open speaking tasks</div>
+            <div class="f-card-num">03</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. WRITING -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">04</div>
+      <div class="sh-text">
+        <div class="sh-label">Section Four</div>
+        <div class="sh-title">Writing</div>
+        <div class="sh-meta">Guided · Essays · Reports · Model answers</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-live">Live</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="feature-row">
+          <a href="https://zufarsayfullo-sys.github.io/upperwriting/" target="_blank" class="f-card active">
+            <span class="f-card-badge badge-live">Live</span>
+            <div class="f-card-icon">✍️</div>
+            <div class="f-card-label">Section Four · Guided</div>
+            <div class="f-card-title">Writing Tasks</div>
+            <div class="f-card-desc">Essay and report practice with model answers, structure guides and language banks for B2 writing.</div>
+            <div class="f-card-cta">Open writing tasks</div>
+            <div class="f-card-num">04</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. READING -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">05</div>
+      <div class="sh-text">
+        <div class="sh-label">Section Five</div>
+        <div class="sh-title">Reading</div>
+        <div class="sh-meta">Comprehension · Sentence completion · True / False</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-live">Live</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="feature-row">
+          <a href="https://zufarsayfullo-sys.github.io/upperreading/" target="_blank" class="f-card active">
+            <span class="f-card-badge badge-live">Live</span>
+            <div class="f-card-icon">📖</div>
+            <div class="f-card-label">Section Five · Comprehension</div>
+            <div class="f-card-title">Reading Practice</div>
+            <div class="f-card-desc">B2 exam-style reading passages with sentence completion and True/False exercises across 5 different texts.</div>
+            <div class="f-card-cta">Open reading tasks</div>
+            <div class="f-card-num">05</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. LISTENING -->
+  <div class="section-wrap">
+    <button class="section-toggle" onclick="toggle(this)">
+      <div class="sh-num">06</div>
+      <div class="sh-text">
+        <div class="sh-label">Section Six</div>
+        <div class="sh-title">Listening</div>
+        <div class="sh-meta">Coming soon</div>
+      </div>
+      <div class="sh-right">
+        <span class="sh-status status-soon">Soon</span>
+        <div class="sh-chevron">▾</div>
+      </div>
+    </button>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <div class="coming-strip">
+          <div class="coming-dot"></div>
+          Listening tasks — coming soon · We are working on it
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIGNATURE ── -->
+  <div class="signature-section">
+    <div class="sig-line"></div>
+    <div class="sig-label">Designed &amp; created by</div>
+    <div class="sig-name">Mr Zufar</div>
+    <div class="sig-title">Upper-Intermediate English · B2 Exam Preparation</div>
+    <div class="sig-sub">Oxford Navigate · All rights reserved</div>
+  </div>
+
+</div>
+
+<script>
+// ── PARTICLES ──────────────────────────────────────────
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
+class Particle {
+  constructor(){ this.reset(); }
+  reset(){
+    this.x=Math.random()*W; this.y=Math.random()*H;
+    this.r=Math.random()*1.4+0.3;
+    this.vx=(Math.random()-0.5)*0.18; this.vy=(Math.random()-0.5)*0.18;
+    this.alpha=Math.random()*0.35+0.05; this.gold=Math.random()<0.4;
+  }
+  update(){ this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset(); }
+  draw(){
+    ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle=this.gold?`rgba(200,168,75,${this.alpha})`:`rgba(240,234,216,${this.alpha*0.5})`; ctx.fill();
+  }
+}
+for(let i=0;i<120;i++) particles.push(new Particle());
+function drawConnections(){
+  for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){
+    const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<90){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(200,168,75,${0.06*(1-d/90)})`; ctx.lineWidth=0.5; ctx.stroke(); }
+  }
+}
+function animate(){ ctx.clearRect(0,0,W,H); drawConnections(); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
+animate();
+
+// ── COLLAPSIBLE TOGGLE ────────────────────────────────
+function toggle(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.section-body.open').forEach(b=>{
+    b.classList.remove('open');
+    b.previousElementSibling.classList.remove('open');
+  });
+
+  // Open clicked (if it was closed)
+  if(!isOpen){
+    body.classList.add('open');
+    btn.classList.add('open');
+    // Smooth scroll to it
+    setTimeout(()=>{ btn.scrollIntoView({behavior:'smooth', block:'start'}); }, 80);
+  }
+}
+</script>
+</body>
+</html>
