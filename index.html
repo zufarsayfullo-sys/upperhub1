@@ -3,600 +3,444 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upper-Intermediate Exam Prep · Mr Zufar</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Exam Prep · Mr Zufar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background: linear-gradient(135deg, #0a0f1e 0%, #0a0c1a 100%);
-  font-family: 'Space Grotesk', sans-serif;
-  min-height: 100vh;
-  color: #ffffff;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Animated background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 100, 100, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(100, 200, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255, 200, 100, 0.05) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Main container */
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-  position: relative;
-  z-index: 2;
-}
-
-/* Hero Section */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
-  position: relative;
-}
-
-.hero-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
-  padding: 8px 20px;
-  border-radius: 40px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffd93d;
-}
-
-.hero h1 {
-  font-size: clamp(48px, 8vw, 88px);
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #ffd93d 50%, #ff6b6b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-}
-
-.hero-sub {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Stats Bar */
-.stats-bar {
+  font-family: 'Inter', sans-serif;
+  background: #0C0E1A;
+  color: #fff;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin: 48px 0 0;
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  padding: 12px 28px;
-  border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.stat-number {
-  font-size: 32px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffd93d, #ff6b6b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-family: 'DM Mono', monospace;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-left: 8px;
-  letter-spacing: 1px;
-}
-
-/* Section Group */
-.section-group {
-  margin-bottom: 48px;
-}
-
-.section-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  padding-left: 8px;
-  border-left: 4px solid #ffd93d;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.section-title span {
-  background: linear-gradient(135deg, #ffd93d, #ff6b6b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-}
-
-/* Cards */
-.card {
-  background: rgba(20, 25, 45, 0.7);
-  backdrop-filter: blur(12px);
-  border-radius: 28px;
-  padding: 28px;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
+  flex-direction: column;
   overflow: hidden;
-  text-decoration: none;
-  display: block;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #ff6b6b, #ffd93d, #4ecdc4);
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 217, 61, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.card:hover::before {
-  transform: scaleX(1);
-}
-
-/* Color variants */
-.card[data-color="red"] .card-icon { background: linear-gradient(135deg, #ff6b6b20, #ff6b6b10); border-color: #ff6b6b40; }
-.card[data-color="gold"] .card-icon { background: linear-gradient(135deg, #ffd93d20, #ffd93d10); border-color: #ffd93d40; }
-.card[data-color="teal"] .card-icon { background: linear-gradient(135deg, #4ecdc420, #4ecdc410); border-color: #4ecdc440; }
-.card[data-color="purple"] .card-icon { background: linear-gradient(135deg, #a78bfa20, #a78bfa10); border-color: #a78bfa40; }
-.card[data-color="orange"] .card-icon { background: linear-gradient(135deg, #fb923c20, #fb923c10); border-color: #fb923c40; }
-.card[data-color="pink"] .card-icon { background: linear-gradient(135deg, #f472b620, #f472b610); border-color: #f472b640; }
-.card[data-color="blue"] .card-icon { background: linear-gradient(135deg, #60a5fa20, #60a5fa10); border-color: #60a5fa40; }
-.card[data-color="cyan"] .card-icon { background: linear-gradient(135deg, #06b6d420, #06b6d410); border-color: #06b6d440; }
-.card[data-color="lime"] .card-icon { background: linear-gradient(135deg, #84cc1620, #84cc1610); border-color: #84cc1640; }
-.card[data-color="indigo"] .card-icon { background: linear-gradient(135deg, #8b5cf620, #8b5cf610); border-color: #8b5cf640; }
-
-.card-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
+.topbar {
+  background: #111320;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 24px;
+  height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  border: 1px solid;
-  transition: all 0.3s ease;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
-.card:hover .card-icon {
-  transform: scale(1.05) rotate(5deg);
+.logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; }
+.logo span { color: #FFB800; }
+
+.level-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 20px;
 }
 
-.card-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-  text-transform: uppercase;
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  overflow: hidden;
 }
 
-.badge-live {
-  background: linear-gradient(135deg, #4ecdc4, #2c9e8f);
-  color: white;
-  box-shadow: 0 0 12px rgba(78, 205, 196, 0.3);
+/* SIDEBAR */
+.sidebar {
+  background: #111320;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
 }
 
-.badge-soon {
-  background: linear-gradient(135deg, #ffd93d, #f59e0b);
-  color: #0a0f1e;
+.sidebar-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 1.8px;
+  text-transform: uppercase; color: rgba(255,255,255,0.2);
+  padding: 0 8px; margin: 10px 0 4px;
 }
+.sidebar-label:first-child { margin-top: 0; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 9px; border-radius: 7px;
+  font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.5);
+  border: none; background: transparent; width: 100%;
+  text-align: left; cursor: pointer; transition: all 0.12s;
+}
+.nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.nav-item.active { background: rgba(255,255,255,0.09); color: #fff; }
+
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.cnt {
+  margin-left: auto; font-size: 10px;
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35);
+  padding: 1px 5px; border-radius: 20px;
+}
+
+/* CONTENT */
+.content { overflow-y: auto; padding: 20px; }
+
+.section { display: none; }
+.section.active { display: block; }
+
+.sec-head {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px;
+}
+.sec-head h2 {
+  font-family: 'Syne', sans-serif; font-size: 20px;
+  font-weight: 800; letter-spacing: -0.4px;
+}
+.sec-head small { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 500; }
+
+/* Cards grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.grid.compact { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+
+.card {
+  display: block; text-decoration: none;
+  background: #181A2E; border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--c);
+  transition: transform 0.15s, border-color 0.15s;
+  position: relative;
+}
+.card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--c) 50%, rgba(255,255,255,0.06)); }
+.card.wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; }
+.card.wide .card-body { flex: 1; }
+.card.soon { opacity: 0.4; pointer-events: none; }
+
+.card-emoji { font-size: 20px; margin-bottom: 8px; display: block; }
+.card.wide .card-emoji { margin-bottom: 0; font-size: 24px; flex-shrink: 0; }
 
 .card-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
-  color: white;
+  font-family: 'Syne', sans-serif; font-size: 13px;
+  font-weight: 700; color: #fff; margin-bottom: 4px;
+  letter-spacing: -0.1px; line-height: 1.2;
 }
+.card.wide .card-title { font-size: 15px; }
 
 .card-desc {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  line-height: 1.45; margin-bottom: 10px;
 }
 
-.card-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+.card-row {
+  display: flex; align-items: center; justify-content: space-between;
 }
 
-.card-meta span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.badge {
+  font-size: 8px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 2px 7px; border-radius: 20px;
 }
+.live { background: rgba(0,200,120,0.15); color: #00C878; }
+.soon-b { background: rgba(255,184,0,0.15); color: #FFB800; }
 
-.card-arrow {
-  margin-left: auto;
-  font-size: 18px;
-  transition: transform 0.3s ease;
-  color: #ffd93d;
+.arrow {
+  width: 24px; height: 24px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: #fff;
+  background: var(--c); transition: transform 0.12s;
 }
+.card:hover .arrow { transform: translateX(3px); }
 
-.card:hover .card-arrow {
-  transform: translateX(8px);
-}
+/* Color vars */
+.r  { --c: #FF4757; } .g  { --c: #FFB800; } .t  { --c: #00D2B8; }
+.p  { --c: #9B7FFF; } .o  { --c: #FF7B25; } .b  { --c: #4A90FF; }
+.cy { --c: #00C5E3; } .li { --c: #7ED321; } .in { --c: #5F7CFF; }
+.pk { --c: #FF6BAA; }
 
-/* Featured card (full width) */
-.card.featured {
-  grid-column: span 2;
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.05));
-  border-color: rgba(255, 217, 61, 0.3);
+/* Footer */
+.footer {
+  background: #111320;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 8px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 10px; color: rgba(255,255,255,0.2);
+  flex-shrink: 0;
 }
-
-.card.featured .card-icon {
-  width: 64px;
-  height: 64px;
-  font-size: 32px;
-}
-
-@media (max-width: 768px) {
-  .card.featured {
-    grid-column: span 1;
-  }
-}
-
-/* Coming Soon Card */
-.card.coming {
-  opacity: 0.7;
-  cursor: default;
-}
-
-.card.coming:hover {
-  transform: none;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.card.coming .card-arrow {
-  opacity: 0.5;
-}
-
-/* Signature */
-.signature {
-  margin-top: 80px;
-  text-align: center;
-  padding: 40px 0 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
-}
-
-.signature-line {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ffd93d, #ff6b6b, transparent);
-  margin: 0 auto 24px;
-}
-
-.signature-name {
-  font-size: 36px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffd93d, #ff6b6b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 8px;
-  font-family: 'DM Mono', monospace;
-}
-
-.signature-title {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    padding: 24px 16px 60px;
-  }
-  
-  .card-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .card {
-    padding: 22px;
-  }
-  
-  .card-title {
-    font-size: 22px;
-  }
-  
-  .stats-bar {
-    gap: 16px;
-  }
-  
-  .stat-item {
-    padding: 8px 20px;
-  }
-  
-  .stat-number {
-    font-size: 24px;
-  }
-}
-
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.card-icon {
-  animation: floatIcon 3s ease-in-out infinite;
-}
+.footer-stats { display: flex; gap: 20px; }
+.footer-stats span strong { color: rgba(255,255,255,0.6); }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-badge">⚡ OXFORD NAVIGATE · B2 UPPER-INTERMEDIATE ⚡</div>
-    <h1>Exam<br>Preparation</h1>
-    <p class="hero-sub">Complete skills programme designed by Mr Zufar — Master every section with confidence</p>
-    
-    <div class="stats-bar">
-      <div class="stat-item">
-        <span class="stat-number">6</span>
-        <span class="stat-label">Grammar Quizzes</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">4</span>
-        <span class="stat-label">Vocabulary Tasks</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">B2</span>
-        <span class="stat-label">Level</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">∞</span>
-        <span class="stat-label">Practice</span>
-      </div>
-    </div>
+<div class="topbar">
+  <div class="logo">Mr <span>Zufar</span></div>
+  <div class="level-tag">Oxford Navigate · B2 Upper-Intermediate</div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Sections</div>
+
+    <button class="nav-item active" onclick="show('all',this)">
+      <div class="dot" style="background:rgba(255,255,255,0.3)"></div>
+      All topics <span class="cnt">13</span>
+    </button>
+    <button class="nav-item" onclick="show('grammar',this)">
+      <div class="dot" style="background:#FF4757"></div>
+      Grammar <span class="cnt">6</span>
+    </button>
+    <button class="nav-item" onclick="show('vocab',this)">
+      <div class="dot" style="background:#00D2B8"></div>
+      Vocabulary <span class="cnt">4</span>
+    </button>
+    <button class="nav-item" onclick="show('speaking',this)">
+      <div class="dot" style="background:#9B7FFF"></div>
+      Speaking <span class="cnt">1</span>
+    </button>
+    <button class="nav-item" onclick="show('writing',this)">
+      <div class="dot" style="background:#FFB800"></div>
+      Writing <span class="cnt">1</span>
+    </button>
+    <button class="nav-item" onclick="show('reading',this)">
+      <div class="dot" style="background:#4A90FF"></div>
+      Reading <span class="cnt">1</span>
+    </button>
+    <button class="nav-item" onclick="show('listening',this)">
+      <div class="dot" style="background:#FF6BAA"></div>
+      Listening <span class="cnt">—</span>
+    </button>
   </div>
 
-  <!-- GRAMMAR SECTION - ALL 6 QUIZZES (INTACT) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>📚</span> Grammar · 6 Quizzes
-    </div>
-    <div class="card-grid">
-      <a href="https://zufarsayfullo-sys.github.io/uppermodal/" target="_blank" class="card" data-color="red">
-        <div class="card-icon">⚡</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Modal Verbs</div>
-        <div class="card-desc">Master obligation, permission, deduction and possibility. Targeted questions based on real exam errors.</div>
-        <div class="card-meta"><span>🎯 Grammar · Unit 1</span><div class="card-arrow">→</div></div>
-      </a>
+  <div class="content">
 
-      <a href="https://zufarsayfullo-sys.github.io/upperusedto/" target="_blank" class="card" data-color="gold">
-        <div class="card-icon">🔄</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Used To & Would</div>
-        <div class="card-desc">Past habits, states, and the be/get used to distinction. The most confused structures at B2.</div>
-        <div class="card-meta"><span>🎯 Grammar · Unit 2</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/upperwordforms/" target="_blank" class="card" data-color="teal">
-        <div class="card-icon">🔤</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Word Formation</div>
-        <div class="card-desc">Adjectives, adverbs, nouns and sentence adverbs. Build vocabulary for Use of English tasks.</div>
-        <div class="card-meta"><span>🎯 Grammar · Unit 3</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/upperwish/" target="_blank" class="card" data-color="purple">
-        <div class="card-icon">✨</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Wish & If Only</div>
-        <div class="card-desc">Present wishes, future wishes and past regrets. Mastering the tense sequence after wish.</div>
-        <div class="card-meta"><span>🎯 Grammar · Unit 4</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/upperthirdcond/" target="_blank" class="card" data-color="orange">
-        <div class="card-icon">🔀</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Third Conditional</div>
-        <div class="card-desc">Past hypotheticals with had + p.p. and would have + p.p. Spot and avoid common errors.</div>
-        <div class="card-meta"><span>🎯 Grammar · Unit 5</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/uppermix/" target="_blank" class="card featured" data-color="gold">
-        <div class="card-icon">🎯</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Full Grammar Mix</div>
-        <div class="card-desc">All grammar units combined in one timed challenge. The ultimate B2 grammar workout — are you ready?</div>
-        <div class="card-meta"><span>🎯 Mixed Revision</span><div class="card-arrow">→</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- VOCABULARY SECTION - UPDATED: 4 quizes (removed adjective suffixes, added 2 new ones) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>✨</span> Vocabulary · 4 Interactive Tasks
-    </div>
-    <div class="card-grid">
-      <a href="https://zufarsayfullo-sys.github.io/uppervocabpreposition/" target="_blank" class="card" data-color="cyan">
-        <div class="card-icon">📍</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Preposition Practice</div>
-        <div class="card-desc">Master adjective + preposition collocations. Complete sentences with the correct preposition based on real exam patterns.</div>
-        <div class="card-meta"><span>📌 Collocations</span><span>🎯 B2 level</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/uppervocabdialogue/" target="_blank" class="card" data-color="indigo">
-        <div class="card-icon">💬</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Dialogue Word Order</div>
-        <div class="card-desc">Rearrange the words to complete a diplomatic dialogue. Practice natural English word order in context.</div>
-        <div class="card-meta"><span>🗣️ Real-life conversation</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/uppervocab11.1/" target="_blank" class="card" data-color="lime">
-        <div class="card-icon">📺</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Fill in the Blank</div>
-        <div class="card-desc">Choose the correct word from the box to complete each sentence. Practice key B2 vocabulary in context.</div>
-        <div class="card-meta"><span>📦 Word Bank</span><span>✅ 5 questions</span><div class="card-arrow">→</div></div>
-      </a>
-
-      <a href="https://zufarsayfullo-sys.github.io/uppervocabnounsuffix/" target="_blank" class="card" data-color="orange">
-        <div class="card-icon">🔧</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Noun Suffixes</div>
-        <div class="card-desc">Form the correct noun by adding -ance, -dom, -ery, -ity, -ment to base words. Essential for word formation.</div>
-        <div class="card-meta"><span>🔤 -ance / -dom / -ery / -ity / -ment</span><div class="card-arrow">→</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- SPEAKING SECTION (INTACT) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>🎙️</span> Speaking
-    </div>
-    <div class="card-grid">
-      <a href="https://zufarsayfullo-sys.github.io/speakingupper/" target="_blank" class="card" data-color="teal">
-        <div class="card-icon">🎙️</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Speaking Practice</div>
-        <div class="card-desc">Exam-style speaking tasks with prompts, timing, and structured practice for B2 oral assessment.</div>
-        <div class="card-meta"><span>🗣️ Interactive</span><span>🎤 Real tasks</span><div class="card-arrow">→</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- WRITING SECTION (INTACT) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>✍️</span> Writing
-    </div>
-    <div class="card-grid">
-      <a href="https://zufarsayfullo-sys.github.io/upperwriting/" target="_blank" class="card" data-color="purple">
-        <div class="card-icon">✍️</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Writing Tasks</div>
-        <div class="card-desc">Essay and report practice with model answers, structure guides, and language banks for B2 writing.</div>
-        <div class="card-meta"><span>📝 Essays</span><span>📊 Reports</span><div class="card-arrow">→</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- READING SECTION (INTACT) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>📖</span> Reading
-    </div>
-    <div class="card-grid">
-      <a href="https://zufarsayfullo-sys.github.io/upperreading/" target="_blank" class="card" data-color="blue">
-        <div class="card-icon">📖</div>
-        <div class="card-badge badge-live">LIVE</div>
-        <div class="card-title">Reading Practice</div>
-        <div class="card-desc">B2 exam-style reading passages with sentence completion and True/False exercises across 5 different texts.</div>
-        <div class="card-meta"><span>📚 5 texts</span><span>✓ Comprehension</span><div class="card-arrow">→</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- LISTENING SECTION - COMING SOON (INTACT) -->
-  <div class="section-group">
-    <div class="section-title">
-      <span>🎧</span> Listening
-    </div>
-    <div class="card-grid">
-      <div class="card coming" data-color="pink">
-        <div class="card-icon">🎧</div>
-        <div class="card-badge badge-soon">SOON</div>
-        <div class="card-title">Listening Tasks</div>
-        <div class="card-desc">Audio-based comprehension tasks with multiple accents and real-life scenarios. Coming soon!</div>
-        <div class="card-meta"><span>🎵 Coming</span><span>🔜 In progress</span><div class="card-arrow">⌛</div></div>
+    <!-- ALL -->
+    <div class="section active" id="sec-all">
+      <div class="sec-head"><h2>All topics</h2><small>13 resources</small></div>
+      <div class="grid compact">
+        <a href="https://zufarsayfullo-sys.github.io/uppermodal/" target="_blank" class="card r">
+          <span class="card-emoji">⚡</span>
+          <div class="card-title">Modal Verbs</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperusedto/" target="_blank" class="card g">
+          <span class="card-emoji">🔄</span>
+          <div class="card-title">Used To & Would</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperwordforms/" target="_blank" class="card t">
+          <span class="card-emoji">🔤</span>
+          <div class="card-title">Word Formation</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperwish/" target="_blank" class="card p">
+          <span class="card-emoji">✨</span>
+          <div class="card-title">Wish & If Only</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperthirdcond/" target="_blank" class="card o">
+          <span class="card-emoji">🔀</span>
+          <div class="card-title">Third Conditional</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppermix/" target="_blank" class="card g">
+          <span class="card-emoji">🎯</span>
+          <div class="card-title">Full Grammar Mix</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabpreposition/" target="_blank" class="card cy">
+          <span class="card-emoji">📍</span>
+          <div class="card-title">Prepositions</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabdialogue/" target="_blank" class="card in">
+          <span class="card-emoji">💬</span>
+          <div class="card-title">Dialogue Word Order</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocab11.1/" target="_blank" class="card li">
+          <span class="card-emoji">📺</span>
+          <div class="card-title">Fill in the Blank</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabnounsuffix/" target="_blank" class="card o">
+          <span class="card-emoji">🔧</span>
+          <div class="card-title">Noun Suffixes</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/speakingupper/" target="_blank" class="card p">
+          <span class="card-emoji">🎙️</span>
+          <div class="card-title">Speaking Practice</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperwriting/" target="_blank" class="card g">
+          <span class="card-emoji">✍️</span>
+          <div class="card-title">Writing Tasks</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperreading/" target="_blank" class="card b">
+          <span class="card-emoji">📖</span>
+          <div class="card-title">Reading Practice</div>
+          <div class="card-row"><span class="badge live">Live</span><div class="arrow">→</div></div>
+        </a>
+        <div class="card soon pk">
+          <span class="card-emoji">🎧</span>
+          <div class="card-title">Listening Tasks</div>
+          <div class="card-row"><span class="badge soon-b">Soon</span><div class="arrow">⌛</div></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Signature -->
-  <div class="signature">
-    <div class="signature-line"></div>
-    <div class="signature-name">Mr Zufar</div>
-    <div class="signature-title">Upper-Intermediate English · B2 Exam Preparation</div>
-    <div class="signature-title" style="font-size: 10px; margin-top: 8px;">Oxford Navigate · All rights reserved</div>
+    <!-- GRAMMAR -->
+    <div class="section" id="sec-grammar">
+      <div class="sec-head"><h2 style="color:#FF4757">Grammar</h2><small>6 quizzes</small></div>
+      <div class="grid">
+        <a href="https://zufarsayfullo-sys.github.io/uppermodal/" target="_blank" class="card r">
+          <span class="card-emoji">⚡</span>
+          <div class="card-title">Modal Verbs</div>
+          <div class="card-desc">Obligation, permission, deduction and possibility. Targeted exam questions.</div>
+          <div class="card-row"><span class="badge live">Unit 1 · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperusedto/" target="_blank" class="card g">
+          <span class="card-emoji">🔄</span>
+          <div class="card-title">Used To & Would</div>
+          <div class="card-desc">Past habits, states, and the be/get used to distinction.</div>
+          <div class="card-row"><span class="badge live">Unit 2 · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperwordforms/" target="_blank" class="card t">
+          <span class="card-emoji">🔤</span>
+          <div class="card-title">Word Formation</div>
+          <div class="card-desc">Adjectives, adverbs, nouns and sentence adverbs.</div>
+          <div class="card-row"><span class="badge live">Unit 3 · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperwish/" target="_blank" class="card p">
+          <span class="card-emoji">✨</span>
+          <div class="card-title">Wish & If Only</div>
+          <div class="card-desc">Present, future wishes and past regrets. Tense sequence.</div>
+          <div class="card-row"><span class="badge live">Unit 4 · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/upperthirdcond/" target="_blank" class="card o">
+          <span class="card-emoji">🔀</span>
+          <div class="card-title">Third Conditional</div>
+          <div class="card-desc">Past hypotheticals with had + p.p. and would have + p.p.</div>
+          <div class="card-row"><span class="badge live">Unit 5 · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppermix/" target="_blank" class="card wide g">
+          <span class="card-emoji">🎯</span>
+          <div class="card-body">
+            <div class="card-title">Full Grammar Mix</div>
+            <div class="card-desc">All grammar units combined in one timed challenge. The ultimate B2 grammar workout.</div>
+            <div class="card-row"><span class="badge live">Mixed Revision · Live</span><div class="arrow">→</div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- VOCAB -->
+    <div class="section" id="sec-vocab">
+      <div class="sec-head"><h2 style="color:#00D2B8">Vocabulary</h2><small>4 tasks</small></div>
+      <div class="grid">
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabpreposition/" target="_blank" class="card cy">
+          <span class="card-emoji">📍</span>
+          <div class="card-title">Preposition Practice</div>
+          <div class="card-desc">Adjective + preposition collocations. Real exam patterns.</div>
+          <div class="card-row"><span class="badge live">Collocations · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabdialogue/" target="_blank" class="card in">
+          <span class="card-emoji">💬</span>
+          <div class="card-title">Dialogue Word Order</div>
+          <div class="card-desc">Rearrange words in a diplomatic dialogue. Natural word order in context.</div>
+          <div class="card-row"><span class="badge live">Word Order · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocab11.1/" target="_blank" class="card li">
+          <span class="card-emoji">📺</span>
+          <div class="card-title">Fill in the Blank</div>
+          <div class="card-desc">Choose correct words from a box. Key B2 vocabulary in context.</div>
+          <div class="card-row"><span class="badge live">Word Bank · Live</span><div class="arrow">→</div></div>
+        </a>
+        <a href="https://zufarsayfullo-sys.github.io/uppervocabnounsuffix/" target="_blank" class="card o">
+          <span class="card-emoji">🔧</span>
+          <div class="card-title">Noun Suffixes</div>
+          <div class="card-desc">Add -ance, -dom, -ery, -ity, -ment. Essential word formation.</div>
+          <div class="card-row"><span class="badge live">Suffixes · Live</span><div class="arrow">→</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SPEAKING -->
+    <div class="section" id="sec-speaking">
+      <div class="sec-head"><h2 style="color:#9B7FFF">Speaking</h2></div>
+      <div class="grid">
+        <a href="https://zufarsayfullo-sys.github.io/speakingupper/" target="_blank" class="card wide p">
+          <span class="card-emoji">🎙️</span>
+          <div class="card-body">
+            <div class="card-title">Speaking Practice</div>
+            <div class="card-desc">Exam-style speaking tasks with prompts, timing, and structured practice for B2 oral assessment.</div>
+            <div class="card-row"><span class="badge live">Interactive · Live</span><div class="arrow">→</div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- WRITING -->
+    <div class="section" id="sec-writing">
+      <div class="sec-head"><h2 style="color:#FFB800">Writing</h2></div>
+      <div class="grid">
+        <a href="https://zufarsayfullo-sys.github.io/upperwriting/" target="_blank" class="card wide g">
+          <span class="card-emoji">✍️</span>
+          <div class="card-body">
+            <div class="card-title">Writing Tasks</div>
+            <div class="card-desc">Essay and report practice with model answers, structure guides, and language banks for B2 writing.</div>
+            <div class="card-row"><span class="badge live">Essays & Reports · Live</span><div class="arrow">→</div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- READING -->
+    <div class="section" id="sec-reading">
+      <div class="sec-head"><h2 style="color:#4A90FF">Reading</h2></div>
+      <div class="grid">
+        <a href="https://zufarsayfullo-sys.github.io/upperreading/" target="_blank" class="card wide b">
+          <span class="card-emoji">📖</span>
+          <div class="card-body">
+            <div class="card-title">Reading Practice</div>
+            <div class="card-desc">B2 exam-style passages with sentence completion and True/False exercises across 5 texts.</div>
+            <div class="card-row"><span class="badge live">5 Texts · Live</span><div class="arrow">→</div></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- LISTENING -->
+    <div class="section" id="sec-listening">
+      <div class="sec-head"><h2 style="color:#FF6BAA">Listening</h2><small>Coming soon</small></div>
+      <div class="grid">
+        <div class="card wide soon pk">
+          <span class="card-emoji">🎧</span>
+          <div class="card-body">
+            <div class="card-title">Listening Tasks</div>
+            <div class="card-desc">Audio-based comprehension with multiple accents and real-life scenarios.</div>
+            <div class="card-row"><span class="badge soon-b">Coming soon</span><div class="arrow">⌛</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
+<div class="footer">
+  <div class="footer-stats">
+    <span><strong>6</strong> grammar quizzes</span>
+    <span><strong>4</strong> vocab tasks</span>
+    <span><strong>B2</strong> level</span>
+  </div>
+  <span>Mr Zufar · Oxford Navigate · All rights reserved</span>
+</div>
+
 <script>
-  // Add hover animation effect
-  const cards = document.querySelectorAll('.card:not(.coming)');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-8px) scale(1.02)';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+}
 </script>
 </body>
 </html>
-```
